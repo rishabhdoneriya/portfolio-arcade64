@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import sections from './Sections';
 import Snowflakes from './Snowflakes';
 import Sidebar from './Sidebar';
@@ -9,6 +9,15 @@ import MainContent from './MainContent';
 export default function App() {
   const [activeSection, setActiveSection] = useState(null);
   const [expandedSkills, setExpandedSkills] = useState({});
+  const [viewportWidth, setViewportWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+
+  useEffect(() => {
+    const handleResize = () => setViewportWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isMobile = viewportWidth <= 768;
 
   const toggleSkillCard = (category) => {
     setExpandedSkills(prev => ({ ...prev, [category]: !prev[category] }));
@@ -20,15 +29,28 @@ export default function App() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '40px 20px',
+      padding: isMobile ? '20px 12px' : '40px 20px',
       backgroundColor: '#000',
       color: '#fff',
       fontFamily: `'Press Start 2P', monospace`,
       position: 'relative',
       overflow: 'hidden',
     },
-    container: { display: 'grid', gridTemplateColumns: '450px 1.3fr', gap: '30px', width: '95%', maxWidth: '1250px', zIndex: 1 },
-    main: { padding: '32px', backgroundColor: '#111', minHeight: '520px', position: 'relative' },
+    container: {
+      display: 'grid',
+      gridTemplateColumns: isMobile ? '1fr' : '450px 1.3fr',
+      gap: isMobile ? '16px' : '30px',
+      width: isMobile ? '100%' : '95%',
+      maxWidth: '1250px',
+      zIndex: 1
+    },
+    main: {
+      padding: isMobile ? '16px' : '32px',
+      backgroundColor: '#111',
+      minHeight: isMobile ? 'auto' : '520px',
+      position: 'relative',
+      scrollMarginTop: isMobile ? '64px' : '0px'
+    },
   };
 
   return (
@@ -38,17 +60,16 @@ export default function App() {
       <div style={styles.container}>
         
         <Sidebar sections={sections} activeSection={activeSection} setActiveSection={setActiveSection} />
-        <main style={styles.main}>
+        <main id="main-content" style={styles.main}>
           <MainContent
             activeSection={activeSection}
-              setActiveSection={setActiveSection} 
+            setActiveSection={setActiveSection}
             sections={sections}
             expandedSkills={expandedSkills}
             toggleSkillCard={toggleSkillCard}
           />
         </main>
       </div>
-      <ScoreCard score="47/16/06 (16-13 win)" />
       <div
   style={{
     position: 'fixed',

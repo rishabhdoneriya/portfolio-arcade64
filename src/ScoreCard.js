@@ -6,22 +6,23 @@ export default function ScoreCard({ score }) {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth <= 768 : false;
 
   return (
     <>
       {/* Score Card */}
       <div
         style={{
-          position: 'absolute',
-          bottom: '20px',
-          left: '20px',
+          position: 'fixed',
+          bottom: isMobile ? '12px' : '20px',
+          left: isMobile ? '12px' : '20px',
           backgroundColor: '#222',
-          padding: '16px',
+          padding: isMobile ? '10px' : '16px',
           border: '4px solid #0ff',
-          fontSize: '14px',
+          fontSize: isMobile ? '12px' : '14px',
           lineHeight: '1.6',
           cursor: 'pointer',
-          zIndex: 10,
+          zIndex: 900, // keep above content but below modal overlay
         }}
         onClick={openModal} // click to open image
       >
@@ -50,8 +51,8 @@ export default function ScoreCard({ score }) {
             src={csczImage}
             alt="CSCZ"
             style={{
-              maxWidth: '80%',
-              maxHeight: '80%',
+              maxWidth: isMobile ? '95%' : '80%',
+              maxHeight: isMobile ? '70%' : '80%',
               boxShadow: '0 0 20px #0ff',
               border: '4px solid #0ff',
               cursor: 'default',

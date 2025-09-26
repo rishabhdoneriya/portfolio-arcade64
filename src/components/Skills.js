@@ -9,6 +9,7 @@ const skillCategories = {
 };
 
 export default function Skills({ expandedSkills, toggleSkillCard }) {
+  // eslint-disable-next-line no-unused-vars
   const [hoveredCard, setHoveredCard] = useState(null);
 
   const containerStyle = {
@@ -23,7 +24,6 @@ export default function Skills({ expandedSkills, toggleSkillCard }) {
   return (
     <div style={containerStyle}>
       {Object.entries(skillCategories).map(([category, skills]) => {
-        const isHovered = hoveredCard === category;
         return (
           <div
             key={category}
@@ -40,9 +40,19 @@ export default function Skills({ expandedSkills, toggleSkillCard }) {
               <div className="underline" />
             </h4>
             {expandedSkills[category] && (
-              <ul className="skill-list">
-                {skills.map(skill => <li key={skill}>{skill}</li>)}
-              </ul>
+              <div
+                style={{
+                  marginTop: '10px',
+                  borderRadius: '12px',
+                  backgroundColor: '#111',
+                  padding: '12px'
+                }}
+              >
+                <ul className="skill-list">
+                  {skills.map(skill => <li key={skill}>{skill}</li>)}
+                </ul>
+
+              </div>
             )}
           </div>
         );

@@ -7,12 +7,19 @@
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
-  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+/* Add mobile shadow */
+@media (max-width: 768px) {
+  .card {
+    box-shadow: 0 0 4px rgba(0,0,0,0.3);
+  }
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 12px #0ff, 0 0 24px #0ff;
+  box-shadow: 0 0 6px #0ff, 0 0 12px #0ff;
 }
 
 .header {
@@ -34,11 +41,29 @@
   height: 3px;
   background-color: #0ff;
   border-radius: 2px;
-  transition: width 0.3s ease;
+  transition: width 0.3s ease, opacity 0.3s ease;
 }
 
 .card:hover .underline {
   width: 100%;
+}
+
+/* Mobile: Remove animations and add smooth fade-out */
+@media (max-width: 768px) {
+  .card:hover {
+    transform: none;
+    box-shadow: 0 0 4px rgba(0,0,0,0.3);
+  }
+  
+  .underline {
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+  
+  .card:hover .underline {
+    width: 0%;
+    opacity: 0;
+  }
 }
 
 .skill-list {

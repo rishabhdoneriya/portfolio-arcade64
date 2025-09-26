@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Responsive typography helpers */
+@media (max-width: 768px) {
+  html { font-size: 14px; }
+  body { line-height: 1.5; }
+}
+
+/* Slim neon scrollbar for scrollable areas */
+.scrollarea {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #0ff rgba(255,255,255,0.08); /* Firefox */
+}
+
+.scrollarea::-webkit-scrollbar {
+  width: 6px; /* Chrome/Safari */
+}
+
+.scrollarea::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.06);
+}
+
+.scrollarea::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ffd700, #0ff);
+  border-radius: 8px;
+}
+
+.scrollarea::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ffea70, #4dffff);
+}
