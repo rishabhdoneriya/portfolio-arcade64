@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import snowflakeImg from './components/stickers/snowflake.png';
 
 export default function Snowflakes() {
   useEffect(() => {
@@ -13,18 +14,19 @@ export default function Snowflakes() {
     document.body.appendChild(snowContainer);
 
     const createSnowflake = () => {
-      const snowflake = document.createElement('div');
-      const size = Math.random() * 4 + 2;
+      const snowflake = document.createElement('img');
+      const size = Math.random() * 4 + 15;
+      snowflake.src = snowflakeImg;
+      snowflake.alt = 'snowflake';
       snowflake.style.width = `${size}px`;
       snowflake.style.height = `${size}px`;
-      snowflake.style.backgroundColor = 'white';
-      snowflake.style.borderRadius = '50%';
       snowflake.style.position = 'absolute';
       snowflake.style.top = '-10px';
       snowflake.style.left = `${Math.random() * window.innerWidth}px`;
-      snowflake.style.opacity = Math.random();
+      snowflake.style.opacity = String(Math.random());
       snowflake.style.filter = 'blur(1px)';
       snowflake.style.animation = `fall ${5 + Math.random() * 5}s linear forwards`;
+      snowflake.style.pointerEvents = 'none';
       snowContainer.appendChild(snowflake);
       setTimeout(() => snowflake.remove(), 10000);
     };
