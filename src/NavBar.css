@@ -1,0 +1,69 @@
+/* Nav cards */
+.navCard {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.navCard h4 {
+  margin: 0;
+  color: #fff; /* default text color */
+  position: relative;
+}
+
+/* Underline effect on hover */
+.navCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #0ff;
+  transition: width 0.4s ease;
+}
+
+.navCard:hover::after {
+  width: 100%;
+}
+
+.navCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 12px #0ff, 0 0 24px #0ff;
+}
+
+/* Active nav card styling */
+.navCard.active {
+  background-color: gold;                      
+  font-size: 1.5em;                            
+  font-family: 'Charcuterie Engraved', cursive;  
+  box-shadow: 0 0 12px gold, 0 0 24px gold;    
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Force text color black for active card */
+.navCard.active h4 {
+  color: black;
+}
+
+/* Optional underline animation for active card */
+.navCard.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  from { width: 0; }
+  to { width: 100%; }
+}

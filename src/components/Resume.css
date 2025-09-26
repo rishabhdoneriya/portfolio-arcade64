@@ -1,0 +1,43 @@
+.resume-button-wrapper {
+  display: flex;
+  justify-content: flex-end; /* align button to the right inside container */
+  margin-top: 20px; /* optional spacing from top of container */
+}
+
+/* Neon button style */
+.resume-button {
+  background: none;
+  color: #0ff;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px 20px;
+  border: 2px solid #0ff;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px #0ff, 0 0 12px #0ff;
+  display: inline-block;
+}
+
+.resume-button:hover {
+  color: #000;
+  background-color: #0ff;
+  box-shadow: 0 0 12px #0ff, 0 0 24px #0ff;
+}
+
+/* Underline animation */
+.underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background-color: #0ff;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+.resume-button:hover .underline {
+  width: 100%;
+}

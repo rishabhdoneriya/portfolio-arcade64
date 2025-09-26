@@ -1,0 +1,51 @@
+.card {
+  background-color: #1a1a1a;
+  border: 2px solid #0ff;
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 12px #0ff, 0 0 24px #0ff;
+}
+
+.header {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background-color: #0ff;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.card:hover .underline {
+  width: 100%;
+}
+
+.skill-list {
+  padding-left: 20px;
+  margin-top: 12px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  list-style-type: circle;
+}
