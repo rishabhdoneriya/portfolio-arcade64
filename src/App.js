@@ -70,6 +70,9 @@ export default function App() {
           />
         </main>
       </div>
+      { !isMobile && (
+        <ScoreCard score="47/16/06 (16-13 win)" />
+      ) }
       <div
   style={{
     position: 'fixed',
