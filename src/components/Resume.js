@@ -9,7 +9,7 @@ const Resume = () => {
         download
         className="resume-button"
       >
-        Resume
+        Download Resume
         <span className="underline"></span>
       </a>
     </div>
